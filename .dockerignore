@@ -1,0 +1,7 @@
+# flyctl launch added from .gitignore
+# Игнорируем секреты и временные файлы
+**/.env
+**/temp.ogg
+**/__pycache__
+**/*.pyc
+fly.toml
