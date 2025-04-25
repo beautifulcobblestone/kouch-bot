@@ -1,9 +1,10 @@
 import telebot
 import requests
 import os
+import time
 from dotenv import load_dotenv
 
-# Загружаем переменные из .env
+# Загружаем переменные среды
 load_dotenv()
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
@@ -46,4 +47,7 @@ def handle_audio(message):
 
     bot.reply_to(message, text)
 
-bot.polling()
+# 🛠 Анти-баг при запуске: сбросить старые getUpdates, подождать старта
+time.sleep(2)
+bot.get_updates(offset=-1)
+bot.infinity_polling()
